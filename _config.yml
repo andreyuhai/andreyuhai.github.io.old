@@ -1,8 +1,8 @@
 # Site wide configuration
 
-title: Andre Yuhai
+title: Andr éYuhai
 locale: en_US
-description: A computer engineering student who loves programming languages and the ones we speak
+description: A computer engineering student </br> who loves programming languages and the ones we speak
 logo: logo.png
 search: true
 words_per_minute: 200
