@@ -1,12 +1,12 @@
 # Site wide configuration
 
-title: That which inspires awe
+title: Andre Yuhai
 locale: en_US
-description: A software development blog
+description: A computer engineering student who loves programming languages and the ones we speak
 logo: logo.png
 search: true
 words_per_minute: 200
-url: https://blog.indrek.io
+url: http://blog.andreyuhai.com
 #url: http://localhost:4000
 
 # Jekyll configuration
