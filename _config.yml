@@ -1,0 +1,54 @@
+# Site wide configuration
+
+title: That which inspires awe
+locale: en_US
+description: A software development blog
+logo: logo.png
+search: true
+words_per_minute: 200
+url: https://blog.indrek.io
+#url: http://localhost:4000
+
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..4
+  use_coderay: false
+  syntax_highlighter: rouge
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
+
+
+# Site owner
+owner:
+  name: Indrek Ots
+  avatar: avatar4.jpg
+  email: ots.indrek@gmail.com
+  disqus-shortname: thatwhichinspiresawe
+  twitter: otsindrek
+  facebook: #username
+  github: indrekots
+  stackexchange: https://stackoverflow.com/users/2928051/indrek-ots
+  linkedin: indrekots
+  instagram: #username
+  flickr: #username
+  tumblr: #username
+  google:
+    plus: #username
+    analytics: UA-62219982-1
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:

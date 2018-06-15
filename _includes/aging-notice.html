@@ -1,0 +1,9 @@
+{% assign year = 31556926 %}
+{% capture site_time %}{{ site.time | date: '%s' }}{% endcapture %}
+{% assign site_time = site_time | plus: 0 %}
+{% capture post_time %}{{ page.date | date: '%s'}}{% endcapture %}
+{% assign post_time = post_time | plus: 0 %}
+{% assign age = site_time | minus: post_time %}
+{% if age >= year %}
+  <p class="alert">Notice: This post is more than a year old. It may be outdated.</p>
+{% endif %}

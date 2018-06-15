@@ -1,0 +1,9 @@
+{% assign words = include.body | strip_html | number_of_words %}
+
+{% if words < 180 %}
+  1 min read
+{% elsif words < 360 %}
+  1 min read
+{% else %}
+  {{ words | divided_by:site.words_per_minute }} min read
+{% endif %}
