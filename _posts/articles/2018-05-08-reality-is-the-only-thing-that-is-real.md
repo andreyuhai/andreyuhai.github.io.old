@@ -2,7 +2,7 @@
 layout: post
 title: "Reality is the Only Thing That is Real"
 excerpt: The title was the most hitting line for me as I saw a part of me in the movie.
-modified: 
+modified: 2018-06-15 23:22:20 +0300 
 categories: articles
 tags: [movies]
 image:
