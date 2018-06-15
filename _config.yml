@@ -33,21 +33,21 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 
 # Site owner
 owner:
-  name: Indrek Ots
+  name: André Yuhai
   avatar: avatar4.jpg
-  email: ots.indrek@gmail.com
+  email: yuhai.ndre@gmail.com
   disqus-shortname: thatwhichinspiresawe
-  twitter: otsindrek
+  twitter: andreyuhai
   facebook: #username
-  github: indrekots
-  stackexchange: https://stackoverflow.com/users/2928051/indrek-ots
+  github: andreyuhai
+  stackexchange: https://stackoverflow.com/users/4796762/andré-yuhai
   linkedin: indrekots
-  instagram: #username
+  instagram: andreyuhai
   flickr: #username
   tumblr: #username
   google:
     plus: #username
-    analytics: UA-62219982-1
+    analytics: 
     verify:
     ad-client:
     ad-slot:
