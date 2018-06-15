@@ -34,7 +34,7 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 # Site owner
 owner:
   name: André Yuhai
-  avatar: avatar4.jpg
+  avatar: avatar.jpg
   email: yuhai.ndre@gmail.com
   disqus-shortname: blog-andreyuhai-com
   twitter: andreyuhai
