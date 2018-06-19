@@ -7,7 +7,7 @@ categories: articles
 tags: [arduino, ESP8266, IoT, WebSockets]
 image:
   feature: 2018-06-19-wifi-controlled-rc-car-using-esp8266/cover.jpg
-  credit: Photo by Spencer\_
+  credit: Photo by Spencer_
   creditlink: https://unsplash.com/photos/lbqLxgvLt0U
 comments: true
 share: true
