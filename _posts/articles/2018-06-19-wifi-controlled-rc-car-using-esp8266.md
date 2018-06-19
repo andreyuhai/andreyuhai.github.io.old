@@ -7,8 +7,8 @@ categories: articles
 tags: [arduino, ESP8266, IoT, WebSockets]
 image:
   feature: 2018-06-19-wifi-controlled-rc-car-using-esp8266/cover.jpg
-  credit: 
-  creditlink: 
+  credit: Photo by Spencer\_
+  creditlink: https://unsplash.com/photos/lbqLxgvLt0U
 comments: true
 share: true
 published: true
@@ -356,7 +356,7 @@ void loop() {
 ## References
 1. [Introduction to WebSockets] 
 2. [ESP8266 core for Arduino]
-3. [WebSocket communication by tttapa] (*I really recommend this guide to read for anyone who is interested in IoT*)
+3. [WebSocket communication by tttapa] (*I really recommend reading this guide to anyone who is interested in IoT or simply ESP8266*)
 
 [1]:#references
 [introduction to websockets]: http://socketo.me/docs/
