@@ -25,8 +25,7 @@ Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-
 * An RC car
 * Also batteries that meet your needs
 
-I will add a Fritzing schematic showing wire connections for each component soon. Let's dive into the coding part!
-
+![Wifi controlled RC car schematic][connections]
 #### What is WebSocket Protocol?
 
 >WebSockets are a bi-directional, full-duplex, persistent connection from a web browser to a server. Once a WebSocket connection is established the connection stays open until the client or server decides to close this connection. With this open connection, the client or server can send a message at any given time to the other.Introduction to WebSockets.<sup>[1][1]</sup>
@@ -365,4 +364,4 @@ void loop() {
 [3]:#references
 [WebSocket communication by tttapa]:https://tttapa.github.io/ESP8266/Chap14%20-%20WebSocket.html
 
-
+[connections]: ../../images/wifi_controlled_rc_car.png 
