@@ -16,13 +16,13 @@ aging: true
 ---
 #### Contents
 
-1. Components
-2. Wiring Diagram
-3. WebSocket Protocol
-4. Website & JavaScript
-5. Programming the ESP8266-01
-6. Programming the Arduino UNO
-7. References
+1. [Components](#what-are-the-components-ive-used-for-the-project)
+2. [Wiring Diagram](#wiring-diagram)
+3. [WebSocket Protocol](#what-is-websocket-protocol)
+4. [Website & JavaScript](#website-and-javascript)
+5. [Programming the ESP8266-01](#programming-the-esp8266-01)
+6. [Programming the Arduino UNO](#programming-the-arduino)
+7. [References](#references)
 
 ---
 
@@ -68,6 +68,8 @@ About how I send the commands exactly, I just send a two digit number representi
 3: *Forwards*
 
 So for example, 21 would represent "*go straight backwards*" in this case and 13 would represent "*go left forwards*".
+
+#### Website and Javascript
 
 Let's start with the website.
 ```html
