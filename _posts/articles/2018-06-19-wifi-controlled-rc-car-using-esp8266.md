@@ -20,7 +20,6 @@ aging: true
 2. [Wiring Diagram](#wiring-diagram)
 3. [WebSocket Protocol](#what-is-websocket-protocol)
 4. [Creating the JavaScript File](#creating-the-javascript-file)
-  * [Complete JavaScript File](#complete-javascript-file)
 5. [Creating the HTML File](#creating-the-html-file)
 6. [Programming the ESP8266-01](#programming-the-esp8266-01)
 7. [Programming the Arduino UNO](#programming-the-arduino)
@@ -272,136 +271,26 @@ function checkKeyUp(e) { //When the key is released
 }
 ```
 
-#### Website and Javascript
+#### Creating the HTML File
 
-Let's start with the website.
+Creating the index.html is quite easy since we won't need any content. Our `app.js` will do the work, hence we only need to include it with `<script>` tags.
+
 ```html
 <!--- index.html --->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Motor Controller</title>
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="bootstrap.min.css">
-
 </head>
 <body>
 
-    <div class="container">
-      <div class="page-header text-center">
-        <h1>Motor Controller</h1>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-          <div class="input-group">
-            <input id="speed" name="speed" type="text" class="form-control" placeholder="Speed...">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button" onclick="sendSpeed()" >Change the Speed!</button>
-            </span>
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-      </div><!-- /.row -->
-    </div>
-
-
+  <!-- Required for the application to work. -->
   <script type="text/javascript" src="app.js"></script>
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="jquery-3.3.1.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="bootstrap.min.js"></script>
 </body>
 </html>
 ```
 
-You don't even need to put anything between \<body> tags except `<script type="text/javascript" src="app.js"></script>` because that's where we will be using our WebSockets API and get the keystrokes. The `container` in the code was just to try sending the speed using input box.
-```javascript
-//app.js
-document.onkeydown = checkKey; //the function which is invoked on keydown
-document.onkeyup = checkKeyUp; //the function which is invoked on keyup
-
-//Creating a new connection
-var connection = new WebSocket('ws://192.168.4.1:81/', ['arduino']);
-
-connection.onopen = function () {
-  connection.send('Connect ' + new Date());
-};
-connection.onerror = function (error) {
-  console.log('WebSocket Error ', error);
-};
-connection.onmessage = function (e) {
-  console.log('Server: ', e.data);
-};
-connection.onclose = function () {
-  console.log('WebSocket connection closed');
-};
-
-var movement = 2; // 1: BACKWARDS, 2: STOP 3: FORWARDS
-var wheelDirection = 1; // 0: LEFT, 1: STRAIGHT, 2: RIGHT
-
-function checkKey(e) { //When the key is pressed
-
-    e = e || window.event;
-
-    if (e.keyCode == '38') {
-      // up arrow
-      movement = 2;
-      console.log("forward");
-    }
-    else if (e.keyCode == '40') {
-        // down arrow
-        movement = 0;
-        console.log("down");
-    }
-    else if (e.keyCode == '37') {
-       // left arrow
-       wheelDirection = 1;
-       console.log("left");
-    }
-    else if (e.keyCode == '39') {
-       // right arrow
-       wheelDirection = 3;
-       console.log("right");
-    }
-    var sum = (wheelDirection*10)+movement;
-    connection.send(sum.toString());
-    console.log("sum: "+sum);
-}
-
-function checkKeyUp(e) { //When the key is released
-
-    e = e || window.event;
-
-    if (e.keyCode == '38') {
-      // up arrow
-      movement = 1;
-      console.log("stop forward");      
-    }
-    else if (e.keyCode == '40') {
-        // down arrow
-        movement = 1;
-        console.log("stop backwards");
-    }
-    else if (e.keyCode == '37') {
-       // left arrow
-       wheelDirection = 2;
-       console.log("stop left");
-    }
-    else if (e.keyCode == '39') {
-       // right arrow
-       wheelDirection = 2;
-       console.log("stop right");
-    }
-    var sum = (wheelDirection*10)+movement; //Summing the commands as mentioned.
-    connection.send(sum.toString()); //Sending the number or command so to speak.
-    console.log("sum: "+sum);
-}
-```
----
 #### Programming the ESP8266-01
 We are going to program the ESP8266 using libraries<sup>[2][2]</sup> on GitHub.
 ```cpp
