@@ -14,6 +14,18 @@ share: true
 published: true
 aging: true
 ---
+#### Contents
+
+1. Components
+2. Wiring Diagram
+3. WebSocket Protocol
+4. Website & JavaScript
+5. Programming the ESP8266-01
+6. Programming the Arduino UNO
+7. References
+
+---
+
 Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-01) RC car using WebSocket protocol that I've been working on literally for months. Actually not have been working on but instead have had in mind for months would be more appropriate to say since I didn't really have time to completely focus on it so far and moreover with a tight budget you can't really buy everything you need at once. Also a misplaced capacitor between the 3.3V regulator and ESP8266 took me three days to figure out why my ESP8266 was not working properly but in the meantime I'd already ordered a new NodeMCU one. **facepalm*\*
 
 #### What are the components I've used for the project?
