@@ -20,7 +20,7 @@ aging: true
 2. [Wiring Diagram](#wiring-diagram)
 3. [WebSocket Protocol](#what-is-websocket-protocol)
 4. [Creating the JavaScript File](#creating-the-javascript-file)
-   1. [Complete JavaScript File](#complete-javascript-file)
+   * [Complete JavaScript File](#complete-javascript-file)
 5. [Creating the HTML File](#creating-the-html-file)
 6. [Programming the ESP8266-01](#programming-the-esp8266-01)
 7. [Programming the Arduino UNO](#programming-the-arduino)
