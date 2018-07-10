@@ -19,10 +19,11 @@ aging: true
 1. [Components](#what-are-the-components-ive-used-for-the-project)
 2. [Wiring Diagram](#wiring-diagram)
 3. [WebSocket Protocol](#what-is-websocket-protocol)
-4. [Website & JavaScript](#website-and-javascript)
-5. [Programming the ESP8266-01](#programming-the-esp8266-01)
-6. [Programming the Arduino UNO](#programming-the-arduino)
-7. [References](#references)
+4. [Creating the JavaScript File](#creating-the-javascript-file)
+5. [Website & JavaScript](#website-and-javascript)
+6. [Programming the ESP8266-01](#programming-the-esp8266-01)
+7. [Programming the Arduino UNO](#programming-the-arduino)
+8. [References](#references)
 
 ---
 
@@ -70,6 +71,120 @@ About how I send the commands exactly, I just send a two digit number representi
 3: *Forwards*
 
 So for example, 21 would represent "*go straight backwards*" in this case and 13 would represent "*go left forwards*".
+
+#### Creating the JavaScript File
+
+Here I will be explaining the codes in my `app.js` file.
+```javascript
+var movement = 2; // 1: BACKWARDS, 2: STOP 3: FORWARDS
+var wheelDirection = 1; // 0: LEFT, 1: STRAIGHT, 2: RIGHT
+```
+Above we are declaring our variables which we will be assigning different values according to keystrokes we've read and then send them to our Arduino using WebSocket Protocol.
+
+---
+```javascript
+document.onkeydown = checkKeyDown; //the function which is invoked on keydown
+document.onkeyup = checkKeyUp; //the function which is invoked on keyup
+```
+Defining our keydown and keyup functions.
+
+---
+
+```javascript
+//Creating a new connection
+var connection = new WebSocket('ws://192.168.4.1:81/', ['arduino']);
+
+connection.onopen = function () {
+  connection.send('Connect ' + new Date());
+};
+connection.onerror = function (error) {
+  console.log('WebSocket Error ', error);
+};
+connection.onmessage = function (e) {
+  console.log('Server: ', e.data);
+};
+connection.onclose = function () {
+  console.log('WebSocket connection closed');
+};
+```
+We are going to connect to the server at  `ws://192.168.4.1` on `the port 81` with a protocol named `arduino`.
+
+On successful connection, we send a string to the server including the connection date.
+
+On error, we log error to the console.
+
+On lost connection or close, `WebSocket connection closed.` logged to the console.
+
+On message from the server we again log it to the console.
+
+---
+
+```javascript
+function checkKeyDown(e) { //When the key is pressed
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+      // up arrow
+      movement = 2;
+      console.log("forward");
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+        movement = 0;
+        console.log("down");
+    }
+    else if (e.keyCode == '37') {
+       // left arrow
+       wheelDirection = 1;
+       console.log("left");
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+       wheelDirection = 3;
+       console.log("right");
+    }
+    var sum = (wheelDirection*10)+movement;
+    connection.send(sum.toString());
+    console.log("sum: "+sum);
+}
+```
+Here we are defining our `checkKeyDown` function. What we are doing is simply checking the keystrokes whether they are one of the arrow keys, if so, we are assigning the variables the above specified values accordingly.
+
+At the end we are summing the two values `wheelDirection` and `movement` then we are sending the sum to the server and also logging it to the console. 
+
+---
+```javascript
+function checkKeyUp(e) { //When the key is released
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+      // up arrow
+      movement = 1;
+      console.log("stop forward");      
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+        movement = 1;
+        console.log("stop backwards");
+    }
+    else if (e.keyCode == '37') {
+       // left arrow
+       wheelDirection = 2;
+       console.log("stop left");
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+       wheelDirection = 2;
+       console.log("stop right");
+    }
+    var sum = (wheelDirection*10)+movement; //Summing the commands as mentioned.
+    connection.send(sum.toString()); //Sending the number or command so to speak.
+    console.log("sum: "+sum);
+}
+```
+This is the same process as `checkKeyDown` function. The only difference is that this function sends stop signals after a key is released.
 
 #### Website and Javascript
 
