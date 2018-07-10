@@ -2,7 +2,7 @@
 layout: post
 title: "Wi-Fi Controlled RC Car Using ESP8266-01"
 excerpt: In this post I will be documenting my project about a Wi-Fi controlled RC car using WebSocket protocol with ESP8266-01.
-modified: 
+modified: 2018-07-10 19:22:52 +0300
 categories: articles
 tags: [arduino, ESP8266, IoT, WebSockets]
 image:
@@ -25,7 +25,10 @@ Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-
 * An RC car
 * Also batteries that meet your needs
 
-![Wifi controlled RC car schematic][connections]
+#### Wiring Diagram
+
+![Wifi controlled RC car wiring diagram][wiring diagram]
+
 #### What is WebSocket Protocol?
 
 >WebSockets are a bi-directional, full-duplex, persistent connection from a web browser to a server. Once a WebSocket connection is established the connection stays open until the client or server decides to close this connection. With this open connection, the client or server can send a message at any given time to the other.Introduction to WebSockets.<sup>[1][1]</sup>
@@ -364,4 +367,4 @@ void loop() {
 [3]:#references
 [WebSocket communication by tttapa]:https://tttapa.github.io/ESP8266/Chap14%20-%20WebSocket.html
 
-[connections]: ../../images/wifi_controlled_rc_car.png 
+[wiring diagram]: ../../images/wifi_controlled_rc_car.png 
