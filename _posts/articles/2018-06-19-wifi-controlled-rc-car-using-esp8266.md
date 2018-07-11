@@ -46,7 +46,7 @@ Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-
 
 #### What is WebSocket Protocol?
 
->WebSockets are a bi-directional, full-duplex, persistent connection from a web browser to a server. Once a WebSocket connection is established the connection stays open until the client or server decides to close this connection. With this open connection, the client or server can send a message at any given time to the other.Introduction to WebSockets.<sup>[1][1]</sup>
+>WebSockets are a bi-directional, full-duplex, persistent connection from a web browser to a server. Once a WebSocket connection is established the connection stays open until the client or server decides to close this connection. With this open connection, the client or server can send a message at any given time to the other.<sup>[1][1]</sup>
 
 #### How is all this going to be working?
 
