@@ -291,7 +291,7 @@ Creating the index.html is quite easy since we won't need any content. Our `app.
 </html>
 ```
 
-#### Programming the ESP8266-01
+#### Programming the Arduino
 We are going to program the ESP8266 using libraries<sup>[2][2]</sup> on GitHub.
 ```cpp
 #include <SoftwareSerial.h>
@@ -401,7 +401,7 @@ void loop()
 }
 ```
 ---
-#### Programming the Arduino
+#### Programming the ESP8266-01
 We are going to use the arduinoWebSockets library by Links2004. Download the library from [GitHub](https://github.com/Links2004/arduinoWebSockets) and install it. (Sketch > Include Library > Add .ZIP Library...)<sup>[3][3]</sup>
 ```cpp
 #include <ESP8266WiFi.h>
