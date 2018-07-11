@@ -409,8 +409,10 @@ We are going to use the arduinoWebSockets library by Links2004. Download the lib
 #include <WebSocketsServer.h>
 
 WebSocketsServer webSocket(81);
-const char *ssid = "softAPI";  // You will connect your phone to this Access Point
-const char *pw = "pass123"; // and this is the password
+
+const char *ssid  = "softAPI";  // You will connect your phone to this Access Point
+const char *pw    = "thereisnospoon"; // and this is the password
+
 IPAddress ip(192,168,4,1);
 IPAddress netmask(255,255,255,0);
 
@@ -436,14 +438,14 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
     if(payload == NULL){
       Serial.println("Nothing useful");
     }else{
-      Serial.printf("[%u] speed:%s\n", num, payload);
+      Serial.printf("[%u] hiz:%s\n", num, payload);
     }
     break;
   }
 }
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   
   delay(1000);
   
@@ -458,6 +460,7 @@ void setup() {
 void loop() {
   webSocket.loop();  
 }
+
 ```
 **_I will be updating this post adding more detailed explanations and photos from the project when I have more time to focus on this post. Till then, you can contact me via email for any question about the project._**
  
