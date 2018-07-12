@@ -94,9 +94,6 @@ Defining our keydown and keyup functions.
 //Creating a new connection
 var connection = new WebSocket('ws://192.168.4.1:81/', ['arduino']);
 
-connection.onopen = function () {
-  connection.send('Connect ' + new Date());
-};
 connection.onerror = function (error) {
   console.log('WebSocket Error ', error);
 };
@@ -109,11 +106,9 @@ connection.onclose = function () {
 ```
 We are going to connect to the server at  `ws://192.168.4.1` on `the port 81` with a protocol named `arduino`.
 
-On successful connection, we send a string to the server including the connection date.
-
 On error, we log error to the console.
 
-On lost connection or close, `WebSocket connection closed.` logged to the console.
+On lost connection or closed connection, `WebSocket connection closed.` logged to the console.
 
 On message from the server we again log it to the console.
 
@@ -196,9 +191,6 @@ document.onkeyup = checkKeyUp; //the function which is invoked on keyup
 //Creating a new connection
 var connection = new WebSocket('ws://192.168.4.1:81/', ['arduino']);
 
-connection.onopen = function () {
-  connection.send('Connect ' + new Date());
-};
 connection.onerror = function (error) {
   console.log('WebSocket Error ', error);
 };
