@@ -50,7 +50,7 @@ Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-
 
 *So that, I've just wired a 9V 850mA adapter as my source and had no problems driving the car around as long as its cable let me of course :).*
 
-#### What is WebSocket Protocol?
+## What is WebSocket Protocol?
 
 >WebSockets are a bi-directional, full-duplex, persistent connection from a web browser to a server. Once a WebSocket connection is established the connection stays open until the client or server decides to close this connection. With this open connection, the client or server can send a message at any given time to the other.<sup>[1][1]</sup>
 
@@ -187,7 +187,7 @@ function checkKeyUp(e) { //When the key is released
 ```
 This is the same process as `checkKeyDown` function. The only difference is that this function sends stop signals after a key is released.
 
-#### Complete JavaScript File
+## Complete JavaScript File
 
 ```javascript
 //app.js
@@ -269,7 +269,7 @@ function checkKeyUp(e) { //When the key is released
 }
 ```
 
-#### Creating the HTML File
+## Creating the HTML File
 
 Creating the index.html is quite easy since we won't need any content. Our `app.js` will do the work, hence we only need to include it with `<script>` tags.
 
