@@ -21,7 +21,7 @@ aging: true
 3. [WebSocket Protocol](#what-is-websocket-protocol)
 4. [Creating the JavaScript File](#creating-the-javascript-file)
 5. [Creating the HTML File](#creating-the-html-file)
-6. [Programming the Arduino UNO](#programming-the-arduino)
+6. [Programming the Arduino UNO](#programming-the-arduino-uno)
 7. [Programming the ESP8266-01](#programming-the-esp8266-01)
 8. [References](#references)
 
@@ -283,10 +283,11 @@ Creating the index.html is quite easy since we won't need any content. Our `app.
 </html>
 ```
 
-#### Programming the Arduino
-We are going to program the ESP8266 using libraries<sup>[2][2]</sup> on GitHub.
+#### Programming the Arduino UNO
+Programming the Ardunio UNO we are just going to need a `SoftwareSerial` to communicate with the ESP8266-01. You can read the explanations in the code and that should be enough to understand. If not, you can contact me.
 ```cpp
 #include <SoftwareSerial.h>
+
 
 #define BACKWARDS 0
 #define STOP 1
@@ -298,95 +299,133 @@ We are going to program the ESP8266 using libraries<sup>[2][2]</sup> on GitHub.
 
 SoftwareSerial esp8266(2, 3); //Rx, Tx
 
-int lastSpeed = 21;
-int info[2] = {0}; // info[0] = wheelDirection, info[1] = movement
-int movement;
+/*
+ * info will be our int array where we will keep
+ * our commands for motors separately after splitting the command
+ * variable into its digits.
+ * info[0] will be our wheelDirection, info[1] our movement.
+ */
+int info[2] = {0}; 
+
+/* This will keep the command coming from the ESP8266
+ * Which for example could be numbers like 20, 11, 23
+ */
+int command;
 char c;
 int i;
 
 void setup()
 {
-  Serial.begin(115200);  //For Serial monitor
-  esp8266.begin(115200); //ESP Baud rate
-  /* F R O N T  W H E E L S'  D E C L A R A T I O N */
+  Serial.begin(9600);  //For Serial monitor
+  esp8266.begin(9600); //ESP Baud rate
+  /*
+     Don't make the mistake of using
+     higher baud rates than the ESP8266 or Arduino UNO can handle
+     like I did. Then you may get erroneous bits, hence erroneous commands.
+  */
+
+  // Pin outs for the front motor
   pinMode(13, OUTPUT);
   pinMode(12, OUTPUT);
   pinMode(9, OUTPUT);
 
-  /* R E A R  W H E E L S'  D E C L A R A T I O N */
+  // Pin outs for the rear motor
   pinMode(7, OUTPUT);
   pinMode(6, OUTPUT);
   pinMode(5, OUTPUT);
 
-  /* F R O N T  W H E E L S'  A S S I G N M E N T */
+  // Front motor output pins' initialization
   analogWrite(9, 0);
   digitalWrite(12, LOW);
   digitalWrite(13, HIGH);
 
-  /* R E A R  W H E E L S'  A S S I G N M E N T*/
+  // Rear motor output pins' initialization
   digitalWrite(7, HIGH);
   digitalWrite(6, LOW);
   analogWrite(5, 0);
 }
 
+/* A function to split the command into its digits
+ * and set the speed and direction of motors accordingly.
+ */
 void setSpeed(int newSpeed) {
 
-    int temp = newSpeed;
-    i = 0;
-    while (temp) {
-      info[i] = temp % 10;
-      temp /= 10;
-      i++;
-    }
-    switch (info[1]) {
-      case LEFT:
-        analogWrite(9, 150);
-        digitalWrite(12, HIGH);
-        digitalWrite(13, LOW);
-        break;
-      case RIGHT:
-        analogWrite(9, 150);
-        digitalWrite(12, LOW);
-        digitalWrite(13, HIGH);
-        break;
-      case STRAIGHT:
-        analogWrite(9, 0);
-        break;
-    }
-    switch (info[0]) {
-      case BACKWARDS:
-        analogWrite(5, 60);
-        digitalWrite(6, HIGH);
-        digitalWrite(7, LOW);
-        break;
-      case FORWARDS:
-        analogWrite(5, 60);
-        digitalWrite(6, LOW);
-        digitalWrite(7, HIGH);
-        break;
-      case STOP:
-        analogWrite(5, 0);
-        break;
-    }
-    lastSpeed = newSpeed;
-}
+  int temp = newSpeed;
 
+  /* Printing out our command to the serial monitor so that
+      we can check what's going on.
+  */
+
+  Serial.print("Command: ");
+  Serial.println(temp);
+
+
+  /* Here we are splitting the command (the number actually)
+     into its digits. So that we can power the motors according
+     to those digits and their meaning in switch case block.
+  */
+  i = 0;
+  while (temp) {
+    info[i] = temp % 10;
+    temp /= 10;
+    i++;
+  }
+
+  // Switch case block for front wheels.
+  switch (info[1]) {
+    case LEFT:
+      analogWrite(9, 150);
+      digitalWrite(12, HIGH);
+      digitalWrite(13, LOW);
+      break;
+    case RIGHT:
+      analogWrite(9, 150);
+      digitalWrite(12, LOW);
+      digitalWrite(13, HIGH);
+      break;
+    case STRAIGHT:
+      analogWrite(9, 0);
+      break;
+  }
+
+  // Switch case block for rear wheels.
+  switch (info[0]) {
+    case BACKWARDS:
+      analogWrite(5, 150);
+      digitalWrite(6, HIGH);
+      digitalWrite(7, LOW);
+      break;
+    case FORWARDS:
+      analogWrite(5, 150);
+      digitalWrite(6, LOW);
+      digitalWrite(7, HIGH);
+      break;
+    case STOP:
+      analogWrite(5, 0);
+      break;
+  }
+}
 
 void loop()
 {
-
+  /* Here we are checking the number of bytes
+   *  available for reading from the serial port.
+   *  Then we read that data byte by byte checking
+   *  if there is a colon ":". Because we are sending commands
+   *  in a way like "command: 23" so that after a colon
+   *  we can try to parse  to int what's in the buffer after ":".
+   *  Which will parse just 2 numbers then stop.
+   *  Then we call the setSpeed function.
+   *  One last thing is that:
+   *  We clear the buffer until there nothing to read at the end of each loop.
+   */
   if (esp8266.available() > 0) {
-    char c = esp8266.read();
+    c = esp8266.read();
     if (c == ':') {
-      if (!isdigit(esp8266.peek())) {
-        Serial.println("Skipped");
-      } else {
-        movement = esp8266.parseInt();
-        
-        setSpeed(movement);
-      }
+      command = esp8266.parseInt();
+      setSpeed(command);
       while (esp8266.read() != -1) {
-        //DO NOTHING - TO CLEAR BUFFER
+        //DO NOTHING - to clear the buffer.
       }
     }
   }
