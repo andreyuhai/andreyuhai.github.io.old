@@ -14,7 +14,7 @@ share: true
 published: true
 aging: true
 ---
-#### Contents
+## Contents
 
 1. [Components](#what-are-the-components-ive-used-for-the-project)
 2. [Wiring Diagram](#wiring-diagram)
@@ -23,13 +23,14 @@ aging: true
 5. [Creating the HTML File](#creating-the-html-file)
 6. [Programming the Arduino UNO](#programming-the-arduino-uno)
 7. [Programming the ESP8266-01](#programming-the-esp8266-01)
-8. [References](#references)
+8. [A Short Video of the Car](#video)
+9. [References](#references)
 
 ---
 
 Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-01) RC car using WebSocket protocol that I've been working on literally for months. Actually not have been working on but instead have had in mind for months would be more appropriate to say since I didn't really have time to completely focus on it so far and moreover with a tight budget you can't really buy everything you need at once. Also a misplaced capacitor between the 3.3V regulator and ESP8266 took me three days to figure out why my ESP8266 was not working properly but in the meantime I'd already ordered a new NodeMCU one. **facepalm*\*
 
-#### What are the components I've used for the project?
+## What are the components I've used for the project?
 
 * An Arduino UNO (obviously)
 * An ESP8266-01
@@ -38,7 +39,7 @@ Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-
 * An RC car
 * Also batteries that meet your needs
 
-#### Wiring Diagram
+## Wiring Diagram
 
 <figure>
 	<a href="{{ site.url}}/images/wifi_controlled_rc_car.png" class="image-popup"><img src="{{ site.url}}/images/wifi_controlled_rc_car.png" alt="Wiring diagram"></a>
@@ -53,7 +54,7 @@ Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-
 
 >WebSockets are a bi-directional, full-duplex, persistent connection from a web browser to a server. Once a WebSocket connection is established the connection stays open until the client or server decides to close this connection. With this open connection, the client or server can send a message at any given time to the other.<sup>[1][1]</sup>
 
-#### How is all this going to be working?
+## How is all this going to be working?
 
 After making all the wire connections we are going to create a small website where we will be checking for keystrokes to control the RC car using our arrow keys. We will be sending those keystrokes as commands using JavaScript. 
 
@@ -77,7 +78,7 @@ About how I send the commands exactly, I just send a two digit number representi
 
 So for example, 21 would represent "*go straight backwards*" in this case and 13 would represent "*go left forwards*".
 
-#### Creating the JavaScript File
+## Creating the JavaScript File
 
 Here I will be explaining the codes in my `app.js` file.
 ```javascript
@@ -288,7 +289,7 @@ Creating the index.html is quite easy since we won't need any content. Our `app.
 </html>
 ```
 
-#### Programming the Arduino UNO
+## Programming the Arduino UNO
 Programming the Ardunio UNO we are just going to need a `SoftwareSerial` to communicate with the ESP8266-01. You can read the explanations in the code and that should be enough to understand. If not, you can contact me.
 ```cpp
 #include <SoftwareSerial.h>
@@ -438,7 +439,7 @@ void loop()
 ```
 ---
 
-#### Programming the ESP8266-01
+## Programming the ESP8266-01
 We are going to use the `arduinoWebSockets` library by Links2004. Download the library from [GitHub](https://github.com/Links2004/arduinoWebSockets) and install it. (Sketch > Include Library > Add .ZIP Library...)<sup>[3][3]</sup>
 ```cpp
 #include <ESP8266WiFi.h>
@@ -497,8 +498,8 @@ void loop() {
   webSocket.loop();
 }
 ```
-
-So lastly, I am leaving this video below so you can see it in action. But as I mentioned, since I didn't have a good battery to power it, it's just powered with a 9V 850mA adapter.
+## Video
+Lastly, I am leaving this video below so you can see the car in action. But as I mentioned, since I didn't have a good battery to power it, it's just powered with a 9V 850mA adapter which explains why it is on my desk.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NjfeAqki2nQ" frameborder="0" allowfullscreen></iframe>
  
@@ -513,5 +514,3 @@ So lastly, I am leaving this video below so you can see it in action. But as I m
 [esp8266 core for arduino]:https://github.com/esp8266/Arduino
 [3]:#references
 [WebSocket communication by tttapa]:https://tttapa.github.io/ESP8266/Chap14%20-%20WebSocket.html
-
-
