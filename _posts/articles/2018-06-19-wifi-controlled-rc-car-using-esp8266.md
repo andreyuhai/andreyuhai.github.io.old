@@ -40,7 +40,10 @@ Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-
 
 #### Wiring Diagram
 
-![Wifi controlled RC car wiring diagram][wiring diagram]
+<figure>
+	<a href="{{ site.url}}/images/wifi_controlled_rc_car.png" class="image-popup"><img src="{{ site.url}}/images/wifi_controlled_rc_car.png" alt="Wiring diagram"></a>
+	<figcaption>Wiring diagram of all components.</figcaption>
+</figure>
 
 **NOTE:** *Since I don't have a proper battery -thanks to LiPo batteries and their even more expensive chargers-, I've used 3 9V batteries to source the circuit just to test it on its own but the power was not enough. I also think that it was because the front wheels are controlled by a DC motor instead of a servo motor so if you want your car to turn left, your front DC motor would always be on which will always draw current.*
 
