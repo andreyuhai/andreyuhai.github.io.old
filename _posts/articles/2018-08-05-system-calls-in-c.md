@@ -45,6 +45,7 @@ Let's take a look at what those other letters in the function name mean.
 | l | list|
 | p | path, which tells the function that the command is in the path so you don't need to specify its path|
 | e | environment, you can also pass some environment variables |
+
 <br>
 
 ```c
@@ -78,11 +79,13 @@ After doing `./caller` the output will be `Version of the program: 1.0`.
 
 #### 1.2 Array Functions: `execv()`, `execvp()`, `execve()`
 While using these functions you don't pass the parameters as a list, you just pass all the parameters in an array instead. Except that the usage is the same as `execl()` functions.
-| Letter| Meaning |
-|:-----:|:--------|
-|v|stands for vector
-|p|path
-|e|environment variables
+
+| Letter| Meaning              |
+|:---:  |:--                   |
+|v      |stands for vector     |
+|p      |path                  |
+|e      |environment variables |
+
 
 ```c
 char* args[] = {"echo","here","are","the arguments",NULL};  
