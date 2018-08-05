@@ -6,7 +6,7 @@ modified:
 categories: articles
 tags: [C, system calls]
 image:
-  feature: 2018-08-05-system-calls-in-c/pavan-trikutam-1660-unsplash.jpeg 
+  feature: 2018-08-05-system-calls-in-c/pavan-trikutam-1660-unsplah.jpeg 
   credit: Pavan Tritukam
   creditlink: https://unsplash.com/photos/71CjSSB83Wo 
 comments: true
