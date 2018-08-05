@@ -94,6 +94,21 @@ char* notOnPath[] = {"/bin/echo","here","are","the arguments",NULL};
 execv(notOnPath[0],notOnPath);
 ```
 
+---
+There are two things I want to point. 
+: First, you should always end your parameter list or array with a NULL at the end.
+
+: Second is that when calling an `exec()` function the second parameter should be the same as the program name you are calling, you can check the examples above.
+
+I have found some questions on the SO about that but I couldn't really get it. Maybe one day I will.
+
+- <a href="https://unix.stackexchange.com/questions/187666/why-do-we-have-to-pass-the-file-name-twice-in-exec-functions" target="_blank">Why do we have to pass the file name twice in exec functions?</a>
+- <a href="https://stackoverflow.com/questions/2050961/is-argv0-name-of-executable-an-accepted-standard-or-just-a-common-conventi" target="_blank">Is “argv[0] = name-of-executable” an accepted standard or just a common convention??</a>
+
+
+
+*[SO]:  StackOverflow
+
 [1]: https://www.gnu.org/software/libc/manual/html_node/System-Calls.html
 
 
