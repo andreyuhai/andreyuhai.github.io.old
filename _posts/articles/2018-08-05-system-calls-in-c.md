@@ -42,9 +42,56 @@ Let's take a look at what those other letters in the function name mean.
 
 | Letter   | Meaning       |
 |:--------:| :-------------|
-| l | list        |
-| p | path, which tells the function that the command is in the path so you don't need to specify its path        |
+| l | list|
+| p | path, which tells the function that the command is in the path so you don't need to specify its path|
 | e | environment, you can also pass some environment variables |
+<br>
+
+```c
+execlp("echo","echo","this function is on the path",NULL);
+```
+#### Simple example using environment variables
+Here is a simple example just to demonstrate how to use environment variables. 
+
+Below is the program with which we are going to execute another program using `execle()` with some environment variables.
+```c
+//caller.c compiled to caller
+#include <unistd.h>
+int main(){
+        char* env[] = {"PATH=/some/path","VERSION=1.0", NULL};
+        execle("./toBeExecuted","./toBeExecuted","some parameter",NULL,env);
+}
+```
+
+Here is the program which will use the environment variables sent
+```c
+//toBeExecuted.c compiled to toBeExecuted
+#include <stdio.h> 
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {    
+    printf("Version of the program: %s\n",getenv("VERSION"));  
+  return 0;  
+}
+```
+After doing `./caller` the output will be `Version of the program: 1.0`.
+
+#### 1.2 Array Functions: `execv()`, `execvp()`, `execve()`
+While using these functions you don't pass the parameters as a list, you just pass all the parameters in an array instead. Except that the usage is the same as `execl()` functions.
+| Letter| Meaning |
+|:-----:|:--------|
+|v|stands for vector
+|p|path
+|e|environment variables
+
+```c
+char* args[] = {"echo","here","are","the arguments",NULL};  
+execvp(args[0],args);
+
+//or if your program is not on the PATH
+char* notOnPath[] = {"/bin/echo","here","are","the arguments",NULL};  
+execv(notOnPath[0],notOnPath);
+```
 
 [1]: https://www.gnu.org/software/libc/manual/html_node/System-Calls.html
 
