@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "System Calls in C"
-excerpt: System calls and how to make them. System and exec functions...
+excerpt: System calls and how to make one. System and exec functions.
 modified:
 categories: articles
 tags: [C, system calls]
@@ -47,7 +47,6 @@ Let's take a look at what those other letters in the function name mean.
 | e | environment, you can also pass some environment variables |
 
 <br>
-
 ```c
 execlp("echo","echo","this function is on the path",NULL);
 ```
@@ -82,11 +81,10 @@ While using these functions you don't pass the parameters as a list, you just pa
 
 | Letter| Meaning              |
 |:---:  |:--                   |
-|v      |stands for vector     |
-|p      |path                  |
-|e      |environment variables |
-
-
+|v|stands for vector     |
+|p|path                  |
+|e|environment variables |
+<br>
 ```c
 char* args[] = {"echo","here","are","the arguments",NULL};  
 execvp(args[0],args);
