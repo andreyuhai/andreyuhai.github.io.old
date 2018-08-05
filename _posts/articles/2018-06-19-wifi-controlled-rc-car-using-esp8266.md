@@ -42,7 +42,7 @@ Here I will be documenting my Arduino project about a Wi-Fi controlled (ESP8266-
 ## Wiring Diagram
 
 <figure>
-	<a href="{{ site.url}}/images/wifi_controlled_rc_car.png" class="image-popup"><img src="{{ site.url}}/images/wifi_controlled_rc_car.png" alt="Wiring diagram"></a>
+	<a href="{{ site.url}}/images/2018-06-19-wifi-controlled-rc-car-using-esp8266/wifi_controlled_rc_car.png" class="image-popup"><img src="{{ site.url}}/images/2018-06-19-wifi-controlled-rc-car-using-esp8266/wifi_controlled_rc_car.png" alt="Wiring diagram"></a>
 	<figcaption>Wiring diagram of all components.</figcaption>
 </figure>
 
