@@ -74,6 +74,13 @@ browser.as.each do |follower|
 end
 ```
 
+<figure>
+	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/follower_count.gif" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/follower_count.gif" alt="instagram follower count watir ruby"></a>
+	<figcaption>A preview of the above code.</figcaption>
+</figure>
+
+---
+
 <p id="tldr1">But as you see this is really time consuming. Another approach to this "scrolling down" stuff came [from a user][2] on the SO. I loved his approach and wanted to note it somewhere as to what exactly it does but I guess I've written a liiiittle bit too much. :)</p> 
 
 So, here it is:
