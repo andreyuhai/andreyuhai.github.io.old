@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "How to scroll down a div with dynamic content in ruby using watir"
-excerpt: A brief explanation on how to scroll down a div with dynamic content as long as there is more content.
-modified:
+title: "How to scroll down a div with dynamic content in Ruby using Watir"
+excerpt: A brief explanation on how to scroll down a div with dynamic content as long as there is more content to show.
+modified: 2018-09-09 22:36:52 +0300
 categories: articles
 tags: [ruby, watir, dynamic content]
 image:
@@ -25,12 +25,10 @@ I was trying to create a simple Instagram bot in `Ruby` using [Watir gem][1]. Th
  
 One thing I wanted to figure out was how to unfollow non-followers. This feature is a little bit tedious, because, since I am not using any Instagram APIs, if I wanted to unfollow non-followers (I love to say this!) I would need to know the usernames of the people following me and the ones I am following. Then all I need to do is just compare the two arrays (the ones following me and the ones I am following) and extract the ones I am following and also who are not following me into another array (I know this got really confusing). Then just unfollow them, right?
 
-
 <figure>
 	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/followers_preview.gif" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/followers_preview.gif" alt="Instagram followers dialog box"></a>
-	<figcaption>A preview of what I want to do.</figcaption>
+	<figcaption>A preview of "div with dynamic content".</figcaption>
 </figure>
-
 
 To do the above method using Watir gem in Ruby, I just first navigate to user's Instagram profile, then click on followers. But Instagram doesn't load all of your followers at once. You need to keep scrolling down as long as there are more followers to show as in the gif above. So you can do the math of the waiting time if you had around even 1k followers which is exactly why I said "tedious".
 
@@ -76,7 +74,7 @@ end
 
 <figure>
 	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/follower_count.gif" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/follower_count.gif" alt="instagram follower count watir ruby"></a>
-	<figcaption>A preview of the above code.</figcaption>
+	<figcaption>A preview of the above code. It takes too much time to get all the followers into an array.</figcaption>
 </figure>
 
 ---
@@ -99,8 +97,8 @@ end
 
 
 <figure>
-	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/client_height.png" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/client_height" alt="Client height"></a>
-	<figcaption>Client height is the blue highlighted area.</figcaption>
+	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/client_height.png" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/client_height.png" alt="Client height"></a>
+	<figcaption>Client height is the blue highlighted area which is 351 px.</figcaption>
 </figure>
 
 ---
@@ -121,13 +119,14 @@ Since each`li` element's height is 54 pixels, our `scrollTop` would return 216 p
 
 `scrollHeight` is the total content height of the scrollable div.
 
----
-
-
 <figure>
 	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/scrollTop_clientHeight_scrollHeight.png" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/scrollTop_clientHeight_scrollHeight.png" alt="scrollTop clientHeight scrollHeight"></a>
-	<figcaption>All three measurements are shown in pixels.</figcaption>
+	<figcaption>You can check all the three measurements like so.</figcaption>
 </figure>
+
+Above picture shows how to find out all the three measurements and we had already calculated them. In this case I needed the class' name for the div with the scrollable content.
+
+---
 
 So you can figure out how the above code works. Until `scrollTop + clientHeight = scrollHeight` it keeps scrolling down.
 
