@@ -90,8 +90,20 @@ end
 
 `clientHeight` is actually the div's height which has scrollable content in it which is in this case the blue highlighted area's height in our case.
 
+
+<figure>
+	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/client_height.png" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/client_height" alt="Client height"></a>
+	<figcaption>Client height is the blue highlighted area.</figcaption>
+</figure>
+
 ---
 `scrollTop` is the distance in pixels from the top of your content to it's top-most visible content. Let me explain this better for you. Take a look at the images below. 
+
+
+<figure>
+	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/scroll_top.png" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/scroll_top.png" alt="scrollTop JavaScript"></a>
+	<figcaption>A preview of scrollTop height.</figcaption>
+</figure>
 
 I am 4 followers down from the top. I can't see those 4 followers and the top-most follower (which I can see) is the 5th one. You can also see this in the inspector. There are 4 `li` elements above and the 4th one is highlighted.
 
@@ -103,6 +115,13 @@ Since each`li` element's height is 54 pixels, our `scrollTop` would return 216 p
 `scrollHeight` is the total content height of the scrollable div.
 
 ---
+
+
+<figure>
+	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/scrollTop_clientHeight_scrollHeight.png" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/scrollTop_clientHeight_scrollHeight.png" alt="scrollTop clientHeight scrollHeight"></a>
+	<figcaption>All three measurements are shown in pixels.</figcaption>
+</figure>
+
 So you can figure out how the above code works. Until `scrollTop + clientHeight = scrollHeight` it keeps scrolling down.
 
 
