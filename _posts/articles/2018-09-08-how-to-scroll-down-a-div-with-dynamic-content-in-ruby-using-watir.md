@@ -6,9 +6,9 @@ modified: 2018-09-09 22:36:52 +0300
 categories: articles
 tags: [ruby, watir, dynamic content]
 image:
-  feature: 2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/ronald-cuyan-434484-unsplash-1.jpg 
-  credit: Ronald Cuyan 
-  creditlink: https://unsplash.com/photos/AJgFLjnmSs4
+  feature: 2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/pineapple_cover.jpg 
+  credit: Pineapple Supply Co. 
+  creditlink: https://unsplash.com/photos/1vg0LlKxHG8 
 comments: true
 share: true
 published: true
