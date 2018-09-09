@@ -27,7 +27,7 @@ One thing I wanted to figure out was how to unfollow non-followers. This feature
 
 
 <figure>
-	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/followers_preview.gif" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/followers_preview.gif alt="Instagram followers dialog box"></a>
+	<a href="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/followers_preview.gif" class="image-popup"><img src="{{ site.url}}/images/2018-09-08-how-to-scroll-down-a-div-with-dynamic-content-in-ruby-using-watir/followers_preview.gif" alt="Instagram followers dialog box"></a>
 	<figcaption>A preview of what I want to do.</figcaption>
 </figure>
 
@@ -107,6 +107,6 @@ So you can figure out how the above code works. Until `scrollTop + clientHeight 
 
 [1]: http://watir.com/
 [2]: https://stackoverflow.com/a/52227006/4796762
-[3]:#tldr
+[3]: #tldr
 *[SO]: StackOverflow
 
