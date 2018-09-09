@@ -74,7 +74,7 @@ browser.as.each do |follower|
 end
 ```
 
-<p id="tldr1">But as you see this is really time consuming. Another approach to this "scrolling down" stuff came [from a user][2] on the SO. I loved his approach and wanted to note it somewhere as to what exactly it does but I guess I've written a liiiittle bit too much. :) 
+<p id="tldr1">But as you see this is really time consuming. Another approach to this "scrolling down" stuff came [from a user][2] on the SO. I loved his approach and wanted to note it somewhere as to what exactly it does but I guess I've written a liiiittle bit too much. :)</p> 
 
 So, here it is:
  
@@ -87,6 +87,7 @@ end
 ```
 
 #### What do all these mean?
+
 `clientHeight` is actually the div's height which has scrollable content in it which is in this case the blue highlighted area's height in our case.
 
 ---
