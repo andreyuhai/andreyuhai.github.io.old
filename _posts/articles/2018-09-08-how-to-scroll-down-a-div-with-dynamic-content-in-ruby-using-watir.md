@@ -79,7 +79,7 @@ end
 
 ---
 
-<p id="tldr1">But as you see this is really time consuming. Another approach to this "scrolling down" stuff came [from a user][2] on the SO. I loved his approach and wanted to note it somewhere as to what exactly it does but I guess I've written a liiiittle bit too much. :)</p> 
+But as you see this is really time consuming. Another approach to this "scrolling down" stuff came [from a user][2] on the SO. I loved his approach and wanted to note it somewhere as to what exactly it does but I guess I've written a liiiittle bit too much. :)
 
 So, here it is:
  
@@ -128,7 +128,7 @@ Above picture shows how to find out all the three measurements and we had alread
 
 ---
 
-So you can figure out how the above code works. Until `scrollTop + clientHeight = scrollHeight` it keeps scrolling down.
+So you can now figure out how the above code works. Until `scrollTop + clientHeight = scrollHeight` it keeps assigning `scrollHeight` to `scrollTop` which causes page to scroll down.
 
 
 
