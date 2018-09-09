@@ -76,7 +76,8 @@ end
 
 <p id="tldr1">But as you see this is really time consuming. Another approach to this "scrolling down" stuff came [from a user][2] on the SO. I loved his approach and wanted to note it somewhere as to what exactly it does but I guess I've written a liiiittle bit too much. :) 
 
-So, here it is: 
+So, here it is:
+ 
 ```ruby
 scrollable = browser.div(class: 'j6cq2') # div with overflow-y=scroll
 until browser.execute_script('return arguments[0].scrollTop + arguments[0].clientHeight >= arguments[0].scrollHeight', scrollable) do
