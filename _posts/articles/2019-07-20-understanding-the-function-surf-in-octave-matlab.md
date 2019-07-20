@@ -23,8 +23,8 @@ While trying to do the assignment, I've come across with a function, `surf()`, f
 ---
 
 What was confusing for me in the assignment was this line below: 
->Because of the way meshgrids work in the surf command, we need to transpose `J_vals` before calling surf, or else the axes will be flipped
-`J_vals = J_vals';`
+>Because of the way meshgrids work in the `surf()` command, we need to transpose `J_vals` before calling surf, or else the axes will be flipped.
+>`J_vals = J_vals';`
 
 I couldn't get that at first glance, so I've started fiddling with the function and plots until a few hours later I've found this explanation from the docs[^1]. 
 
