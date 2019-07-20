@@ -64,12 +64,12 @@ By the way, I should mention that in the assignment we were assigning the elemen
 for i = 1:length(theta0_vals)
     for j = 1:length(theta1_vals)
 	  t = [theta0_vals(i); theta1_vals(j)];
-	  J_vals(i,j) = computeCost(X, y, t);
+	  J_vals(i,j) = computeCost(X, y, t); A<sub>i</sub>
     end
 end
 ```
 
-In the above code, we are assigning the result of the computation from A<sub>i<sub> and B~j~ to C~i,j~.
+In the above code, we are assigning the result of the computation from A<sub>i</sub> and B<sub>j<sub> to C<sub>i,j</sub>.
 
 So you can think of it as C<sub>i,j<sub> = (A<sub>i<sub>, B<sub>j<sub>).
 
