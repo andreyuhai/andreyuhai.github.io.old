@@ -64,16 +64,16 @@ By the way, I should mention that in the assignment we were assigning the elemen
 for i = 1:length(theta0_vals)
     for j = 1:length(theta1_vals)
 	  t = [theta0_vals(i); theta1_vals(j)];
-	  J_vals(i,j) = computeCost(X, y, t); A<sub>i</sub>
+	  J_vals(i,j) = computeCost(X, y, t);
     end
 end
 ```
 
-In the above code, we are assigning the result of the computation from A<sub>i</sub> and B<sub>j<sub> to C<sub>i,j</sub>.
+In the above code, we are assigning the result of the computation from A<sub>i</sub> and B<sub>j</sub> to C<sub>i,j</sub>.
 
-So you can think of it as C<sub>i,j<sub> = (A<sub>i<sub>, B<sub>j<sub>).
+So you can think of it as C<sub>i,j</sub> = (A<sub>i</sub>, B<sub>j</sub>).
 
-Considering the explanation above, after using `surf(A, B, C)` you might think that `C(A(1), B(3))` which is `C(1,9)` should be equal to C~1,3~ which is 6.
+Considering the explanation above, after using `surf(A, B, C)` you might think that `C(A(1), B(3))` which is `C(1,9)` should be equal to C<sub>1,3</sub> which is 6.
 
 But as you can see from the above surface plot, the point `(1, 9)` maps to 31 or you can use `interp2(A, B, C, 1, 9)` which will give you the same result.
 
