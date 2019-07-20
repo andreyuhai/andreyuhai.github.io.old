@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Understanding the Function `surf()` in Octave/MATLAB"
-excerpt: An explanation(!) on why we have to transpose that matrix when we are plotting with `surf()`.
+title: "Understanding the Function surf() in Octave/MATLAB"
+excerpt: An explanation(!) on why we have to transpose that matrix when we are plotting with surf().
 modified:
 categories: articles
 tags: [octave, matlab, plot, surf]
 image:
   feature: 2019-07-20-understanding-the-function-surf-in-octave-matlab/abstract_cover.jpg 
-  credit: Pineapple Supply Co. 
+  credit: Cassi Josh 
   creditlink: https://unsplash.com/photos/lhnOvu72BM8 
 comments: true
 share: true
