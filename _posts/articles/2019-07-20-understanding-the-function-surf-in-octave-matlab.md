@@ -69,7 +69,7 @@ for i = 1:length(theta0_vals)
 end
 ```
 
-In the above code, we are assigning the result of the computation from A~i~ and B~j~ to C~i,j~.
+In the above code, we are assigning the result of the computation from A<sub>i<sub> and B~j~ to C~i,j~.
 
 So you can think of it as C<sub>i,j<sub> = (A<sub>i<sub>, B<sub>j<sub>).
 
