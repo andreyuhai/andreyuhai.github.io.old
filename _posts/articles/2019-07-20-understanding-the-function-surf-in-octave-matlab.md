@@ -16,7 +16,7 @@ aging: true
 ---
 ### Understanding the Function `surf()` in Octave/MATLAB
 
-I've been studying Machine Learning for a few days now, on [Coursera](https://www.coursera.org/learn/machine-learning/). After finishing 1^st^ and 2^nd^ weeks, I've got the first assignment for the course where you are supposed to implement Linear Regression using Gradient Descent.
+I've been studying Machine Learning for a few days now, on [Coursera](https://www.coursera.org/learn/machine-learning/). After finishing 1<sup>st</sup> and 2<sup>nd</sup> weeks, I've got the first assignment for the course where you are supposed to implement Linear Regression using Gradient Descent.
 
 While trying to do the assignment, I've come across with a function, `surf()`, for which I've struggled ~~a few hours~~ a little bit  to understand.
 
