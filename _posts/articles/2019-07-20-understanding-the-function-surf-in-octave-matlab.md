@@ -71,7 +71,7 @@ end
 
 In the above code, we are assigning the result of the computation from A~i~ and B~j~ to C~i,j~.
 
-So you can think of it as C~i,j~ = (A~i~, B~j~).
+So you can think of it as C<sub>i,j<sub> = (A<sub>i<sub>, B<sub>j<sub>).
 
 Considering the explanation above, after using `surf(A, B, C)` you might think that `C(A(1), B(3))` which is `C(1,9)` should be equal to C~1,3~ which is 6.
 
