@@ -6,7 +6,7 @@ modified:
 categories: articles
 tags: [octave, matlab, machine learning, multiclass classifiers]
 image:
-  feature: 2019-09-25-coursera-machine-learning-predicting-your-handwriting/cover.png 
+  feature: 2019-09-25-coursera-machine-learning-predicting-your-handwriting/cover.jpg 
   credit: Kyle Glenn
   creditlink: https://unsplash.com/photos/kvIAk3J_A1c
 comments: true
