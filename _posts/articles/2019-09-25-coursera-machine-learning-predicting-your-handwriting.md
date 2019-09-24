@@ -27,7 +27,7 @@ After I've completed the assignment, I was wondering whether I could predict my 
 
 #### How to predict your own handwriting?
 
-To predict your own handwriting successfully, you should make sure you follow these two guidelines below that I've figured out by trial and error and also asking on [discussion forum][2] :
+To predict your own handwriting successfully, you should make sure you follow these two guidelines below that I've figured out by trial and error and also asking on [discussion forum][2]:
 
 - The size of the digit in the image should not be too big or too small.
 - The background pixels should be a consistent shade of gray for almost every pixel or should be as much consistent as possible, not to mention that the digit pixels should be white :).
@@ -40,7 +40,8 @@ Instead we will use a light colored paper (I've used a yellow post-it) and a bla
 
 I will explain this mapping process in detail in this post as well.
 
-> The image pixels are scaled (or normalized) so that -1.0 is black, 0.0 is grey, and +1.0 is white. However, nearly all of the pixels are in the 0.0 to +1.0 range. The backgrounds are grey, and the image "pen strokes" are white.[^1]
+>The image pixels are scaled (or normalized) so that -1.0 is black, 0.0 is grey, and +1.0 is white. However, nearly all of the pixels are in the 0.0 to +1.0 range. The backgrounds are grey, and the image "pen strokes" are white.[^1]
+
 ---
 
 #### Predicting your own handwriting
@@ -49,7 +50,7 @@ After you write down a digit on a paper, take a photo of it and upload it to you
 I will use the image below for predicting my handwriting and then, at the end of this post, I will share a few more images of different digits that I've successfully predicted so you can try to predict them on your own, if you would like to, or just try your own handwriting since that's what this post is about, haha.
 
 <figure>
-  <a href="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/digit_five.jpg" class="image-popup"><img src="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/digit_five.jpg" alt="Digit five"></a>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/digit_five.jpg" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/digit_five.jpg" alt="Digit five"></a>
   <figcaption>The image of my handwriting that will be used for prediction.</figcaption>
 </figure>
 
@@ -76,7 +77,7 @@ This is where we should map our pixel values to comply with the images in the da
 To better visualize the problem that I've explained above take a look at the image below where I've compared the image of my handwriting and a random image from the dataset.
 
 <figure>
-  <a href="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/comparison_digit_five_digit_two.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/comparison_digit_five_digit_two.png" alt="Comparison of the image of my handwriting and an image from the database"></a>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/comparison_digit_five_digit_two.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/comparison_digit_five_digit_two.png" alt="Comparison of the image of my handwriting and an image from the database"></a>
   <figcaption>Comparison of my handwriting (on the left) and a random image from the dataset (on the right).</figcaption>
 </figure>
 
@@ -84,14 +85,14 @@ As you can see from the image we need to map our pixel values between `0` and `1
 
 Moreover we need to cross map our pixel values (I've just made up this term, just please correct me in the comments) meaning that we need to map a pixel value of `0` from our own image to `1` so that our black pixels will turn white and we should map a pixel value of `255` to `0` so that our white pixels will turn gray, in other words, this process will turn our digit white and our background gray which is exactly what we want to achieve.
 
- #### Finally! The mapping part
+#### Finally! The mapping part
 
 >If your number X falls between A and B, and you would like Y to fall between C and D, you can apply the following linear transform:[^2]
-> ```
-> Y = (X-A)/(B-A) * (D-C) + C
-> which is the same as :
-> new_value = (old_value - old_bottom) / (old_top - old_bottom) * (new_top - new_bottom) + new_bottom;
-> ```
+>```
+>Y = (X-A)/(B-A) * (D-C) + C
+>which is the same as :
+>new_value = (old_value - old_bottom) / (old_top - old_bottom) * (new_top - new_bottom) + new_bottom;
+>```
 
 Using the formula above we will map all our pixels. Instead of using `255` and `0` as the `old_top` and `old_bottom`, I've assumed the minimum value in my image matrix to be my `old_bottom` and maximum to be my `old_top`. 
 
@@ -103,7 +104,7 @@ absolute_min = min(img(:)); % 104 which is A in the formula or old_bottom
 In other words, I've assumed the minimum pixel value in my image to be black and the maximum pixel value to be white because this way I can map my pixel values to get my digit white and the background gray. Take a look at the image below to see the difference.
 
 <figure>
-  <a href="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/comparison_different_old_bottom_and_old_top.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/comparison_different_old_bottom_and_old_top.png" alt="Comparison of the image of my handwriting and an image from the database"></a>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/comparison_different_old_bottom_and_old_top.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/comparison_different_old_bottom_and_old_top.png" alt="Comparison of the image of my handwriting and an image from the database"></a>
   <figcaption>Comparison of different old_bottom and old_top values used in mapping pixel values</figcaption>
 </figure>
 
@@ -125,7 +126,7 @@ displayData(mapped_img(:)');
 Which will display the image below.
 
 <figure>
-  <a href="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/digit_five_mapped.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/digit_five_mapped.png" alt="Mapped digit five"></a>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/digit_five_mapped.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/digit_five_mapped.png" alt="Mapped digit five"></a>
   <figcaption>Grayscale image of my handwriting with the pixels mapped.</figcaption>
 </figure>
 
@@ -135,7 +136,7 @@ We can now try to predict our handwriting using `predictOneVsAll` with already t
 predictOneVsAll(all_theta, mapped_img(:)')
 ```
 <figure>
-  <a href="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/prediction_of_the_image_digit_five.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-24-coursera-machine-learning-predicting-your-own-handwriting/prediction_of_the_image_digit_five.png" alt="Prediction of the image digit five"></a>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/prediction_of_the_image_digit_five.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-own-handwriting/prediction_of_the_image_digit_five.png" alt="Prediction of the image digit five"></a>
   <figcaption>Prediction of the handwritten digit in our image.</figcaption>
 </figure>
 
