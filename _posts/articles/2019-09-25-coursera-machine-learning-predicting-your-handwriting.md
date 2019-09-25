@@ -104,7 +104,7 @@ absolute_min = min(img(:)); % 104 which is A in the formula or old_bottom
 In other words, I've assumed the minimum pixel value in my image to be black and the maximum pixel value to be white because this way I can map my pixel values to get my digit white and the background gray. Take a look at the image below to see the difference.
 
 <figure>
-  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_different_old_bottom_and_old_top.png"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_different_old_bottom_and_old_top.png" alt="Comparison of the image of my handwriting and an image from the database"></a>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_different_old_bottom_and_old_top.png" alt="Comparison of the image of my handwriting and an image from the database">
   <figcaption>Comparison of different old_bottom and old_top values used in mapping pixel values</figcaption>
 </figure>
 
