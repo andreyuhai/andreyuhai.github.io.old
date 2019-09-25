@@ -50,7 +50,7 @@ After you write down a digit on a paper, take a photo of it and upload it to you
 I will use the image below for predicting my handwriting and then, at the end of this post, I will share a few more images of different digits that I've successfully predicted so you can try to predict them on your own, if you would like to, or just try your own handwriting since that's what this post is about, haha.
 
 <figure>
-  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/digit_five.jpg" alt="Digit five"></a>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/digit_five.jpg" alt="Digit five">
   <figcaption>The image of my handwriting that will be used for prediction.</figcaption>
 </figure>
 
@@ -77,7 +77,7 @@ This is where we should map our pixel values to comply with the images in the da
 To better visualize the problem that I've explained above take a look at the image below where I've compared the image of my handwriting and a random image from the dataset.
 
 <figure>
-  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_digit_five_digit_two.png" alt="Comparison of the image of my handwriting and an image from the database"></a>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_digit_five_digit_two.png" alt="Comparison of the image of my handwriting and an image from the database">
   <figcaption>Comparison of my handwriting (on the left) and a random image from the dataset (on the right).</figcaption>
 </figure>
 
@@ -131,7 +131,7 @@ displayData(mapped_img(:)');
 Which will display the image below.
 
 <figure>
-  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/digit_five_mapped.png" alt="Mapped digit five"></a>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/digit_five_mapped.png" alt="Mapped digit five">
   <figcaption>Grayscale image of my handwriting with the pixels mapped.</figcaption>
 </figure>
 
@@ -141,7 +141,7 @@ We can now try to predict our handwriting using `predictOneVsAll` with already t
 predictOneVsAll(all_theta, mapped_img(:)')
 ```
 <figure>
-  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/prediction_of_the_image_digit_five.png" alt="Prediction of the image digit five"></a>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/prediction_of_the_image_digit_five.png" alt="Prediction of the image digit five">
   <figcaption>Prediction of the handwritten digit in our image.</figcaption>
 </figure>
 
@@ -210,7 +210,7 @@ findRightBgColor(img, all_theta, 5)
 Which returns:
 
 <figure>
-  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/find_right_bg_color_digit_five.png" alt="Finding right background color"></a>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/find_right_bg_color_digit_five.png" alt="Finding right background color">
   <figcaption>Finding right background color for prediction</figcaption>
 </figure>
 
@@ -258,7 +258,7 @@ title({'incr__mapped__img', 'which is incremented by -0.39', 'which we predicted
 ``` 
 
 <figure>
-  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_of_mapped_img_and_incr_mapped_img.png" alt="Comparison of mapped_img and incr_mapped_img"></a>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_of_mapped_img_and_incr_mapped_img.png" alt="Comparison of mapped_img and incr_mapped_img">
   <figcaption>Comparison of mapped_img and incr_mapped_img</figcaption>
 </figure>
 
@@ -271,7 +271,7 @@ predictOneVsAll(all_theta, incr_mapped_img)
 Which will return:
 
 <figure>
-  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/correct_prediction.png" alt="Correctly predicted handwriting!"></a>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/correct_prediction.png" alt="Correctly predicted handwriting!">
   <figcaption>Correctly predicted our handwriting!</figcaption>
 </figure>
 
