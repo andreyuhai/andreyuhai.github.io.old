@@ -81,7 +81,7 @@ To better visualize the problem that I've explained above take a look at the ima
   <figcaption>Comparison of my handwriting (on the left) and a random image from the dataset (on the right).</figcaption>
 </figure>
 
-As you can see from the image we need to map our pixel values between `0` and `1` so that our image will comply with pixel values of images in the dataset which are all between `0` and `1` roughly. 
+As you can see from the image, we need to map our pixel values between `0` and `1` so that our image will comply with pixel values of images in the dataset which are all between `0` and `1` roughly. 
 
 Moreover we need to cross map our pixel values (I've just made up this term, just please correct me in the comments) meaning that we need to map a pixel value of `0` from our own image to `1` so that our black pixels will turn white and we should map a pixel value of `255` to `0` so that our white pixels will turn gray, in other words, this process will turn our digit white and our background gray which is exactly what we want to achieve.
 
@@ -275,7 +275,30 @@ Which will return:
   <figcaption>Correctly predicted our handwriting!</figcaption>
 </figure>
 
-#### Congratulations!
+#### Other handwritten digits
+
+In case you want to test, here are some other handwritten digits by me that I could successfully predict using the technique above.
+
+<figure>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/digit_six.jpg" alt="Digit six">
+  <figcaption>Digit six.</figcaption>
+</figure>
+
+
+<figure>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/digit_seven.jpg" alt="Digit seven">
+  <figcaption>Digit seven.</figcaption>
+</figure>
+
+
+<figure>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/digit_three.jpg" alt="Digit three">
+  <figcaption>Digit three.</figcaption>
+  <img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/digit_two.jpg" alt="Digit two">
+  <figcaption>Digit two.</figcaption>
+</figure>
+
+--- 
 
 
 [^1]: [Tips for classifying your own images][5] - ML:Programming Exercise 4:Neural Networks Learning
