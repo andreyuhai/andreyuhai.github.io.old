@@ -30,7 +30,7 @@ After I've completed the assignment, I was wondering whether I could predict my 
 To predict your own handwriting successfully, you should make sure you follow these two guidelines below that I've figured out by trial and error and also asking on [discussion forum][2]:
 
 - The size of the digit in the image should not be too big or too small.
-- The background pixels should be a consistent shade of gray for almost every pixel or should be as much consistent as possible, not to mention that the digit pixels should be white :).
+- The background pixels should be a consistent shade of gray for almost every pixel or should be as consistent as possible, not to mention that the digit pixels should be white :).
 
 ---
 
@@ -114,6 +114,10 @@ Our `new_top` will be `0` and `new_bottom` will be `1` as we want our white colo
 % Mapping pixel values
 new_top = 0;
 new_bottom = 1;
+% Before mapping we need to cast our img to double to get precision
+% because now it is of type uint8 which will not give us any precision
+% which might end up all pixel values being 1s or 0s.
+img = double(img);
 mapped_img = (img - absolute_min) / (absolute_max - absolute_min) * (new_top - new_bottom) + new_bottom;
 ```
 
@@ -144,31 +148,133 @@ predictOneVsAll(all_theta, mapped_img(:)')
 Well, actually nothing went wrong for this particular image. As I've mentioned at the beginning of my post. This prediction relies on the background color and its consistency through background pixels, so if you are trying your own handwriting you might not have gotten the background color right, but this might not be the only reason. 
 
 #### What should I do then?
-After I've tried to predict all the digits in different sizes and colors on post-its without fiddling with the pixel values. I've decided to fiddle with the pixel values to try to get the right background color.
+After I've tried to predict all the digits in different sizes and colors on post-its without fiddling with the pixel values. I've decided to fiddle with the pixel values to see whether I can get the background color right and predict the digit successfully.
 
-I've come up with the function below to increment all pixel values and try to predict the digit with the incremented pixel values. Ones it predicts the digit right the function returns the number that has been added to all pixel values, otherwise `-1` is returned.
+I've come up with the function below which maps the pixel values in the image matrix (so you don't need to map pixel values manually) and increments all pixel values gradually trying to predict the digit with the incremented pixel values. This way we are trying to get the background color right so that we can predict the digit successfully. Once it predicts the digit right, the function returns the number that has been added to mapped pixel values which helped us predict the digit correctly, otherwise `-1` is returned.
 
 ```matlab
 % This function tries to find the right value which makes the 
 % background color the closest to the one in the dataset images
 % so that our "predictOneVsAll" function can predict our handwriting correctly.
-% If predicted correctly with the number summed, the number returned. -1 otherwise.
+% If predicted correctly with the number by which the pixel values are incremented,
+% the number returned. -1 otherwise.
+
+% img: 20x20 grayscale image cast to double().
+% all_theta: theta values for classifiers from the exercise
+% y: the actual value that is to be predicted in the image, in this case it is 5.
 
 function p = findRightBgColor(img, all_theta, y)
-  max_value = max(img(:));
+  % Get max value from the image matrix
+  max_value = max(img(:)); 
+  % Get min value from the image matrix
   min_value = min(img(:));
+  % Set p -1 in case we can't predict the digit successfully so the function returns -1
   p = -1;
+  % Map pixel values between 0 and 1
   mapped_img = (img - min_value) / (max_value - min_value) * (-1) + 1;
+  % Increment the mapped image matrix 
+  % by adding all the values from -0.9 to 1 with a step size of 0.01
   for i = -0.9:0.01:1
-    temp = mapped_img + i;
+    % Increment by i
+    temp = mapped_img + i; 
+    % Try to predict the new image matrix with incremented pixel values
     prediction = predictOneVsAll(all_theta, temp(:)');
+    % If predicted successfully
     if prediction == y
+      % Set p to the number that has been added to all pixel values
       p = i;
       break;
     end
   end
 end
 ```
+
+So let's see whether we can get the background color right using this function.
+
+
+```matlab
+% Read the image
+img = imread('/path/to/digit_five.jpg');
+% Convert RGB to grayscale
+img = rgb2gray(img);
+% Resize the image to be 20x20
+img = imresize(img, [20, 20])
+% Convert the image matrix from uint8 to double
+% so that we can get precision when we map
+% or when we divide our pixel values.
+img = double(img);
+% Calling our function to find the right background color.
+findRightBgColor(img, all_theta, 5)
+```
+Which returns:
+
+<figure>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/find_right_bg_color_digit_five.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/find_right_bg_color_digit_five.png" alt="Finding right background color"></a>
+  <figcaption>Finding right background color for prediction</figcaption>
+</figure>
+
+`-0.3900` means that we need to sum all our pixel values  in our `img` matrix with `-0.3900` so that we will get the right background color for prediction.
+
+#### Finally predicting!
+
+```matlab
+% Read the image
+img = imread('/path/to/digit_five.jpg');
+% Convert RGB to grayscale
+img = rgb2gray(img);
+% Resize the image to be 20x20
+img = imresize(img, [20, 20])
+% Convert the image matrix from uint8 to double
+% so that we can get precision when we map
+% or when we divide our pixel values.
+img = double(img);
+% Get min and max values for mapping
+min_val = min(img(:));
+max_val = max(img(:));
+% Map pixel values
+mapped_img = (img - min_val) / (max_val - min_val) * (0 - 1) + 1;
+% Add -0.3900 to all pixel values
+incr_mapped_img = mapped_img + (-0.3900)
+% Display mapped_img and incremented_mapped_img 
+% side by side so you can see the difference in backgrounds
+figure;
+% Divide the figure into 1x2 grid and select the first one.
+subplot(1,2,1);
+% Display mapped_img on the first grid
+displayData(mapped_img(:)');
+% Set the title of mapped_img
+title({'mapped__img', 'which is not incremented by -0.39', 'which we couldn''t predict successfully '})
+% Select the second grid
+subplot(1,2,2);
+% Display incr_mapped_img on the second grid 
+displayData(incr_mapped_img(:)');
+% Set the title of incr_mapped_img
+title({'incr__mapped__img', 'which is incremented by -0.39', 'which we predicted successfully '})
+% Now you can see two different images
+% side by side for comparison of their backgrounds.
+% I've also added a screenshot of these two images below.
+
+``` 
+
+<figure>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_of_mapped_img_and_incr_mapped_img.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_of_mapped_img_and_incr_mapped_img.png" alt="Comparison of mapped_img and incr_mapped_img"></a>
+  <figcaption>Comparison of mapped_img and incr_mapped_img</figcaption>
+</figure>
+
+
+Now that we've done everything let's try to predict the digit in our `incr_mapped_img`
+
+```matlab
+predictOneVsAll(all_theta, incr_mapped_img)
+```
+Which will return:
+
+<figure>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/correct_prediction.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/correct_prediction.png" alt="Correctly predicted handwriting!"></a>
+  <figcaption>Correctly predicted our handwriting!</figcaption>
+</figure>
+
+
 
 
 [^1]: [Tips for classifying your own images][5] - ML:Programming Exercise 4:Neural Networks Learning
