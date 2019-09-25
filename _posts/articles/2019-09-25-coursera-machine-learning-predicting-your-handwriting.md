@@ -104,7 +104,7 @@ absolute_min = min(img(:)); % 104 which is A in the formula or old_bottom
 In other words, I've assumed the minimum pixel value in my image to be black and the maximum pixel value to be white because this way I can map my pixel values to get my digit white and the background gray. Take a look at the image below to see the difference.
 
 <figure>
-  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_different_old_bottom_and_old_top.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_different_old_bottom_and_old_top.png" alt="Comparison of the image of my handwriting and an image from the database"></a>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_different_old_bottom_and_old_top.png"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/comparison_different_old_bottom_and_old_top.png" alt="Comparison of the image of my handwriting and an image from the database"></a>
   <figcaption>Comparison of different old_bottom and old_top values used in mapping pixel values</figcaption>
 </figure>
 
@@ -114,9 +114,10 @@ Our `new_top` will be `0` and `new_bottom` will be `1` as we want our white colo
 % Mapping pixel values
 new_top = 0;
 new_bottom = 1;
-% Before mapping we need to cast our img to double to get precision
+% Before mapping, we need to cast our img to double to get precision
 % because now it is of type uint8 which will not give us any precision
-% which might end up all pixel values being 1s or 0s.
+% which might cause all our pixel values being 1s or 0s
+% when we divide our img matrix
 img = double(img);
 mapped_img = (img - absolute_min) / (absolute_max - absolute_min) * (new_top - new_bottom) + new_bottom;
 ```
@@ -272,6 +273,12 @@ Which will return:
 <figure>
   <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/correct_prediction.png" class="image-popup"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/correct_prediction.png" alt="Correctly predicted handwriting!"></a>
   <figcaption>Correctly predicted our handwriting!</figcaption>
+</figure>
+
+#### Congratulations!
+<figure>
+  <a href="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/congrats.gif"><img src="{{ site.url}}/images/2019-09-25-coursera-machine-learning-predicting-your-handwriting/congrats.gif" alt="Congratulations"></a>
+  <figcaption>Congratulations!</figcaption>
 </figure>
 
 
